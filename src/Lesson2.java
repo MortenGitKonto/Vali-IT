@@ -1,48 +1,170 @@
-import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Lesson2 {
 
     public static void main(String[] args) {
-        exercise1();
-        exercise2(4);
-        exercise3(2, 5);
-        fibonacci(5);
+        //exercise1();
+        //exercise2(8);
+        //exercise3(2, 5);
+        /*int fibResult = fibonacci(6);
+        System.out.println("Fibonacci tagastab selle parameetriga tulemuse: " + fibResult);*/
+        //int fibResult2 = fibonacci(6);
+        //System.out.println("Fibonacci tagastab selle parameetriga tulemuse: " + fibResult2);
         exercise5();
     }
 
     public static void exercise1() {
         // TODO loo 10 elemendile täisarvude massiv
+        int[] m = new int[10];
+
         // TODO loe sisse konsoolist 10 täisarvu
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Palun kirjuta sisse 10 täisarvu");
+
+        for (int i = 0; i < 10; i++) {
+            int scanNr = scanner.nextInt();
+            m[i] = scanNr;
+            System.out.println(i);
+        }
+        System.out.println(Arrays.toString(m));
+
+
         // TODO trüki arvud välja vastupidises järiekorras
+        for (int i = 9; i > 0; i--) {
+            System.out.println(m[i]);
+        }
     }
 
     public static void exercise2(int x) {
         // TODO prindi välja x esimest paaris arvu
-        // Näide:
-        // Sisend 5
-        // Väljund 2 4 6 8 10
+
+        for (int i = 1; i <= (x * 2); i++) {
+            if (i % 2 == 0) {
+                System.out.println(i);
+            }
+        }
+
     }
 
     public static void exercise3(int x, int y) {
         // TODO trüki välja korrutustabel mis on x ühikut lai ja y ühikut kõrge
-        // TODO näiteks x = 3 y = 3
-        // TODO väljund
-        // 1 2 3
-        // 2 4 6
-        // 3 6 9
+        int[][] tabel = new int[x][y];
+
+        for (int rida = 0; rida < x; rida++) {
+
+            System.out.println();//vahetan printimisel rida
+
+            for (int veerg = 0; veerg < y; veerg++) {
+
+                if (rida == 0) {
+                    tabel[rida][veerg] = veerg + 1;
+                    System.out.print(tabel[rida][veerg] + " ");
+                }
+
+                if (rida == 1) {
+                    tabel[rida][veerg] = (rida + 1) * (veerg + 1);
+                    System.out.print(tabel[rida][veerg] + " ");
+                }
+                if (rida == 2) {
+                    tabel[rida][veerg] = (rida + 1) * (veerg + 1);
+                    System.out.print(tabel[rida][veerg] + " ");
+                }
+            }
+            // TODO näiteks x = 3 y = 3
+            // TODO väljund
+            // 1 2 3
+            // 2 4 6
+            // 3 6 9
+        }
     }
 
     public static int fibonacci(int n) {
         // TODO
         // Fibonacci jada on fib(n) = fib(n-1) + fib(n-2);
-        // 0, 1, 1, 2, 3, 5, 8, 13, 21
-        // Tagasta fibonacci jada n element
-        return 0;
+
+        int[] a = new int[n + 1];
+        a[0] = 0;
+        a[1] = 1;
+        int element = 0;
+        for (int i = 0; i <= n; i++) {
+            if (i > 1) {
+                a[i] = a[i - 2] + a[i - 1];
+                element = a[i];
+                //System.out.println("New a[i] " + a[i]);
+
+            }
+
+
+        }
+        return element;
     }
 
-    public static void exercise5() {
-        // https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=36
+
+        /*int previousElementTwo = 0;
+        int previousElementOne = 0;
+        int currentElement = 0;
+
+        for (int i = 0; i <= n; i++) {
+            if (i == 0) {
+                previousElementTwo = 0;
+                previousElementOne = 0;
+                currentElement = 0;
+                //System.out.println(currentElement); CHECK
+            } else if (i == 1) {
+                previousElementTwo = 0;
+                previousElementOne = 1;
+                currentElement = 1;
+            } else if (i == 2) {
+                currentElement = previousElementTwo + previousElementOne;
+                //System.out.println("Current " + currentElement);//CHECK
+                previousElementTwo=previousElementOne;
+                //System.out.println("PrevTwo " + previousElementTwo); //CHECK
+                previousElementOne=currentElement;
+                //System.out.println(("PrevOne " + previousElementOne)); //CHECK
+            } else if (i > 2) {
+                currentElement = previousElementTwo + previousElementOne;
+                //System.out.println("Current " + currentElement);//CHECK
+                previousElementTwo=previousElementOne;
+                //System.out.println("PrevTwo " + previousElementTwo); //CHECK
+                previousElementOne=currentElement;
+                //System.out.println(("PrevOne " + previousElementOne)); //CHECK
+            }
+
+
     }
+        return currentElement*/
+
+    // 0, 1, 1, 2, 3, 5, 8, 13, 21
+    // Tagasta fibonacci jada n element
+
+
+    public static void exercise5() {
+        int longestCycle = 0;
+        // https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=36
+        for (int i = 100; i < 200; i++) {
+            int n = i;
+            int count = 0;
+            while (n != 1) {
+                System.out.println(n);
+                count++;
+                if (n % 2 != 0) {
+                    n = 3 * n + 1;
+                } else {
+                    n = n / 2;
+                }
+            }
+            System.out.println(n);
+            count++;
+            System.out.println("Count of this nr is " + count);
+            if (count > longestCycle) {
+                longestCycle = count;
+            }
+            System.out.println("LongestCount " + longestCycle);
+        }
+
+    }
+
 
     public static void exercise6() {
         /*
@@ -53,13 +175,13 @@ public class Lesson2 {
          */
     }
 
-    public static void exercise7() {
+    /*public static void exercise7() {
         // TODO arvuta kasutades BigDecimali 1.89 * ((394486820340 / 15 ) - 4 )
         BigDecimal a = new BigDecimal(1.89);
         BigDecimal b = new BigDecimal("394486820345");
         BigDecimal c = new BigDecimal("15");
         BigDecimal d = new BigDecimal("4");
-    }
+    }*/
 
     public static void exercise8() {
         /*
