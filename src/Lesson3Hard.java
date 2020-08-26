@@ -46,7 +46,7 @@ public class Lesson3Hard {
 
         Scanner scanner = new Scanner(System.in);
 
-int count = 0;
+        int count = 0;
         for (int i = 1; i > 0; i++) {
             count++;
             int katse = scanner.nextInt();
@@ -58,9 +58,8 @@ int count = 0;
             } else {
                 System.out.println("Vale, proovi väiksemat!");
             }
-            }
         }
-
+    }
 
 
     public static String morseCode(String text) {
