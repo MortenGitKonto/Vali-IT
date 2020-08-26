@@ -1,10 +1,14 @@
 import java.util.Random;
+import java.util.Scanner;
 
 // Enne kui seda tegema hakkad tee ära Lesson 2 (välja arvatud ülesanded 6, 8, 9)
 public class Lesson3Hard {
     public static void main(String[] args) {
-        int evenFiboSum = evenFibonacci(13);
-        System.out.println(evenFiboSum);
+        //int evenFiboSum = evenFibonacci(13);
+        //System.out.println(evenFiboSum);
+
+
+        randomGame();
 
 
     }
@@ -20,7 +24,7 @@ public class Lesson3Hard {
             a[i] = a[i - 2] + a[i - 1];
             //System.out.println("New a[i] " + a[i]);
             if (a[i] % 2 == 0) {
-            sumEvenFib = sumEvenFib + a[i];
+                sumEvenFib = sumEvenFib + a[i];
 
             }
             //System.out.println(sumEvenFib);
@@ -30,18 +34,34 @@ public class Lesson3Hard {
     }
 
 
-
-
-
     public static void randomGame() {
         // TODO kirjuta mäng mis võtab suvalise numbri 0-100, mille kasutaja peab ära arvama
         // iga kord pärast kasutaja sisestatud täis arvu peab programm ütlema kas number oli suurem või väiksem
         // ja kasutaja peab saama uuesti arvata
-        // numbri ära aramise korral peab programm välja trükkima mitu katset läks numbri ära arvamiseks
+        // numbri ära arvamise korral peab programm välja trükkima mitu katset läks numbri ära arvamiseks
+
         Random random = new Random();
-        int i = random.nextInt(100);
-        System.out.println(i);
-    }
+        int arvRandom = random.nextInt(100);
+        //System.out.println(arv);
+
+        Scanner scanner = new Scanner(System.in);
+
+int count = 0;
+        for (int i = 1; i > 0; i++) {
+            count++;
+            int katse = scanner.nextInt();
+            if (katse == arvRandom) {
+                System.out.println("Õige! See oli " + count + ". katse :)");
+                break;
+            } else if (katse < arvRandom) {
+                System.out.println("Vale, proovi suuremat!");
+            } else {
+                System.out.println("Vale, proovi väiksemat!");
+            }
+            }
+        }
+
+
 
     public static String morseCode(String text) {
         // TODO kirjuta programm, mis tagastab sisestatud teksti morse koodis (https://en.wikipedia.org/wiki/Morse_code)
