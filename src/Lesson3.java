@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Lesson3 {
 
 
@@ -39,16 +37,26 @@ public class Lesson3 {
 
         //KOLMAS
 
-        int faktoriaal = factorial(12);
-        System.out.println("Faktoriaal on : " + faktoriaal);
+        // int faktoriaal = factorial(12);
+        //System.out.println("Faktoriaal on : " + faktoriaal);
 
         //NELJAS
 
-        int[] m = {2, 6, 8, 1};
-        int[] result = sort(m);
-        System.out.println("Massiiv on: " + Arrays.toString(m));
-        System.out.println("Sorteeritud massiiv on: " + Arrays.toString(result));
+        /* int[] m = {2, 6, 6, 4, 2, 10, 110, 8, 1};
 
+       System.out.println("Massiiv on: " + Arrays.toString(m));
+        int[] result = sort(m);
+        System.out.println("Sorteeritud massiiv on: " + Arrays.toString(result));*/
+
+        //VIIES
+
+        /*String s = reverseString("Vali IT");
+        System.out.println(s);*/
+
+        //KUUES
+
+        boolean prime = isPrime(1);
+        System.out.println("True or false: " + prime);
 
     }
 
@@ -87,11 +95,10 @@ public class Lesson3 {
 
     public static int[] sort(int[] a) {
         // TODO sorteeri massiiv suuruse järgi
-int[]x=new int[a.length];
         int temp;
         for (int i = 1; i < a.length; i++) {
             for (int j = i; j > 0; j--) {
-                if (a[j] < a [j - 1]) {
+                if (a[j] < a[j - 1]) {
                     temp = a[j];
                     a[j] = a[j - 1];
                     a[j - 1] = temp;
@@ -101,44 +108,39 @@ int[]x=new int[a.length];
         for (int i = 0; i < a.length; i++) {
             System.out.println(a[i]);
         }
-        return x;
+        return a;
     }
-
-
-       /* int[] x = new int[a.length];
-
-        int lowestSoFar = 0;
-
-        for (int i = 0; i < a.length; i++) {
-            for(int j = 0; )
-            if (lowestSoFar == 0) {
-                lowestSoFar = a[i];
-            } else if (a[i] < lowestSoFar) {
-                lowestSoFar = a[i];
-                }
-            x[0]=lowestSoFar;
-        }*/
-
-
-
-
-
-    // Näiteks {2, 6, 8, 1}
-    // Väljund {1, 2, 6, 8}
-
 
 
     public static String reverseString(String a) {
         // TODO tagasta string tagurpidi
-        // Näiteks:
-        // a = "Test";
-        // return tseT";
+        String tagurpidi = "";
+        String currentLetter = "";
+        int wordLength = a.length();
+        //System.out.println(wordLength);
+
+        for (int i = a.length() - 1; i >= 0; i--) {
+            currentLetter = a.substring(i, i + 1);
+            //System.out.println(currentLetter);
+            tagurpidi = tagurpidi + currentLetter;
+
+        }
+        System.out.println(tagurpidi);
         return "";
     }
 
     public static boolean isPrime(int x) {
         // TODO tagasta kas sisestatud arv on primaar arv (jagub ainult 1 ja iseendaga)
-        return false;
+
+        for (int i = x - 1; i > 1; i--) {
+            if (x % i == 0) {
+return false;
+            }
+        }
+        return true;
     }
 
+
 }
+
+
