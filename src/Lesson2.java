@@ -1,9 +1,11 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Lesson2 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { //OK
         //exercise1();
         //exercise2(8);
         //exercise3(2, 5);
@@ -11,10 +13,11 @@ public class Lesson2 {
         System.out.println("Fibonacci tagastab selle parameetriga tulemuse: " + fibResult);*/
         //int fibResult2 = fibonacci(6);
         //System.out.println("Fibonacci tagastab selle parameetriga tulemuse: " + fibResult2);
-        exercise5();
+        //exercise5();
+        exercise7();
     }
 
-    public static void exercise1() {
+    public static void exercise1() { //OK
         // TODO loo 10 elemendile täisarvude massiv
         int[] m = new int[10];
 
@@ -22,7 +25,7 @@ public class Lesson2 {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Palun kirjuta sisse 10 täisarvu");
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) { //OK
             int scanNr = scanner.nextInt();
             m[i] = scanNr;
             System.out.println(i);
@@ -31,12 +34,12 @@ public class Lesson2 {
 
 
         // TODO trüki arvud välja vastupidises järiekorras
-        for (int i = 9; i > 0; i--) {
+        for (int i = 9; i > 0; i--) { //OK
             System.out.println(m[i]);
         }
     }
 
-    public static void exercise2(int x) {
+    public static void exercise2(int x) { //OK
         // TODO prindi välja x esimest paaris arvu
 
         for (int i = 1; i <= (x * 2); i++) {
@@ -47,7 +50,7 @@ public class Lesson2 {
 
     }
 
-    public static void exercise3(int x, int y) {
+    public static void exercise3(int x, int y) { //OK
         // TODO trüki välja korrutustabel mis on x ühikut lai ja y ühikut kõrge
         int[][] tabel = new int[x][y];
 
@@ -79,7 +82,7 @@ public class Lesson2 {
         }
     }
 
-    public static int fibonacci(int n) {
+    public static int fibonacci(int n) { //OK
         // TODO
         // Fibonacci jada on fib(n) = fib(n-1) + fib(n-2);
 
@@ -139,7 +142,7 @@ public class Lesson2 {
     // Tagasta fibonacci jada n element
 
 
-    public static void exercise5() {
+    public static void exercise5() { //OK
         int longestCycle = 0;
         // https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=36
         for (int i = 100; i < 200; i++) {
@@ -175,13 +178,35 @@ public class Lesson2 {
          */
     }
 
-    /*public static void exercise7() {
+    public static void exercise7() { //OK
         // TODO arvuta kasutades BigDecimali 1.89 * ((394486820340 / 15 ) - 4 )
-        BigDecimal a = new BigDecimal(1.89);
+
+
+        BigDecimal a = new BigDecimal("1.89");
+        System.out.println(a);
         BigDecimal b = new BigDecimal("394486820345");
+        System.out.println(b);
         BigDecimal c = new BigDecimal("15");
+        System.out.println(c);
         BigDecimal d = new BigDecimal("4");
-    }*/
+        System.out.println(d);
+
+        BigDecimal result = a.multiply((b.divide(c,RoundingMode.HALF_UP)).subtract(d));
+        System.out.println(result);
+
+        //LAHKU KIRJUTATULT
+
+        /*BigDecimal division = b.divide(c, RoundingMode.HALF_UP);
+        System.out.println(division);
+        BigDecimal subtraction = division.subtract(d);
+        System.out.println(subtraction);
+        BigDecimal multiplication = subtraction.multiply(a);
+        System.out.println(multiplication);*/
+
+
+
+
+    }
 
     public static void exercise8() {
         /*
