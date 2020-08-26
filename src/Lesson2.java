@@ -11,10 +11,10 @@ public class Lesson2 {
         //exercise3(2, 5);
         /*int fibResult = fibonacci(6);
         System.out.println("Fibonacci tagastab selle parameetriga tulemuse: " + fibResult);*/
-        //int fibResult2 = fibonacci(6);
-        //System.out.println("Fibonacci tagastab selle parameetriga tulemuse: " + fibResult2);
+        int fibResult2 = fibonacci(6);
+        System.out.println("Fibonacci tagastab selle parameetriga tulemuse: " + fibResult2);
         //exercise5();
-        exercise7();
+        //exercise7();
     }
 
     public static void exercise1() { //OK
@@ -86,11 +86,11 @@ public class Lesson2 {
         // TODO
         // Fibonacci jada on fib(n) = fib(n-1) + fib(n-2);
 
-        int[] a = new int[n + 1];
+        int[] a = new int[n];
         a[0] = 0;
         a[1] = 1;
         int element = 0;
-        for (int i = 0; i <= n; i++) {
+        for (int i = 0; i < n; i++) {
             if (i > 1) {
                 a[i] = a[i - 2] + a[i - 1];
                 element = a[i];
