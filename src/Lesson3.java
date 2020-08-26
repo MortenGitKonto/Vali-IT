@@ -134,7 +134,7 @@ public class Lesson3 {
 
         for (int i = x - 1; i > 1; i--) {
             if (x % i == 0) {
-return false;
+                return false;
             }
         }
         return true;
