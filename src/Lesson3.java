@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Lesson3 {
 
 
@@ -42,10 +44,10 @@ public class Lesson3 {
 
         //NELJAS
 
-
-
-
-
+        int[] m = {2, 6, 8, 1};
+        int[] result = sort(m);
+        System.out.println("Massiiv on: " + Arrays.toString(m));
+        System.out.println("Sorteeritud massiiv on: " + Arrays.toString(result));
 
 
     }
@@ -83,18 +85,48 @@ public class Lesson3 {
     }
 
 
-    // Näiteks
-    // x = 5
-    // return 4*3*2*1 = 24
-
-
-
     public static int[] sort(int[] a) {
         // TODO sorteeri massiiv suuruse järgi
-        // Näiteks {2, 6, 8, 1}
-        // Väljund {1, 2, 6, 8}
-        return new int[0];
+int[]x=new int[a.length];
+        int temp;
+        for (int i = 1; i < a.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if (a[j] < a [j - 1]) {
+                    temp = a[j];
+                    a[j] = a[j - 1];
+                    a[j - 1] = temp;
+                }
+            }
+        }
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+        }
+        return x;
     }
+
+
+       /* int[] x = new int[a.length];
+
+        int lowestSoFar = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            for(int j = 0; )
+            if (lowestSoFar == 0) {
+                lowestSoFar = a[i];
+            } else if (a[i] < lowestSoFar) {
+                lowestSoFar = a[i];
+                }
+            x[0]=lowestSoFar;
+        }*/
+
+
+
+
+
+    // Näiteks {2, 6, 8, 1}
+    // Väljund {1, 2, 6, 8}
+
+
 
     public static String reverseString(String a) {
         // TODO tagasta string tagurpidi
