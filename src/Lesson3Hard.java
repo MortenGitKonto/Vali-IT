@@ -3,7 +3,7 @@ import java.util.Random;
 // Enne kui seda tegema hakkad tee ära Lesson 2 (välja arvatud ülesanded 6, 8, 9)
 public class Lesson3Hard {
     public static void main(String[] args) {
-        int evenFiboSum = evenFibonacci(9);
+        int evenFiboSum = evenFibonacci(13);
         System.out.println(evenFiboSum);
 
 
@@ -18,12 +18,12 @@ public class Lesson3Hard {
         int sumEvenFib = 0;
         for (int i = 2; i < x; i++) {
             a[i] = a[i - 2] + a[i - 1];
-            System.out.println("New a[i] " + a[i]);
+            //System.out.println("New a[i] " + a[i]);
             if (a[i] % 2 == 0) {
             sumEvenFib = sumEvenFib + a[i];
 
             }
-            System.out.println(sumEvenFib);
+            //System.out.println(sumEvenFib);
         }
 
         return sumEvenFib;
