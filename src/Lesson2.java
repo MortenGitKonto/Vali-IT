@@ -19,9 +19,11 @@ public class Lesson2 {
         //System.out.println("Fibonacci tagastab selle parameetriga tulemuse: " + fibResult2);
         //exercise5();
 
-        exercise6();
+        //exercise6();
 
         //exercise7();
+        exercise8();
+
     }
 
     public static void exercise1() { //OK
@@ -176,7 +178,7 @@ public class Lesson2 {
     }
 
 
-    public static void exercise6() throws FileNotFoundException {
+    public static void exercise6() throws FileNotFoundException {//OK
         /*
             Kirjutada Java programm, mis loeb failist visits.txt sisse looduspargi külastajad erinevatel jaanuari päevadel ning
             a) sorteerib külastuspäevad külastajate arvu järgi kasvavalt ning prindib tulemuse konsoolile;
