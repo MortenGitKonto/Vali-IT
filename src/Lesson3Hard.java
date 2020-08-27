@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,7 +9,10 @@ public class Lesson3Hard {
         //System.out.println(evenFiboSum);
 
 
-        randomGame();
+        //randomGame();
+
+        String morsekoodis = morseCode("morten");
+
 
 
     }
@@ -65,6 +69,28 @@ public class Lesson3Hard {
     public static String morseCode(String text) {
         // TODO kirjuta programm, mis tagastab sisestatud teksti morse koodis (https://en.wikipedia.org/wiki/Morse_code)
         // Kasuta sümboleid . ja -
-        return "";
+
+        String morseText;
+        morseText = "";
+        int textLength = text.length();
+
+        HashMap<String, String> keel = new HashMap<>();
+        keel.put("a", "· −");
+        keel.put("b", "-···");
+        keel.put("e", "·");
+        keel.put("m", "— —");
+        keel.put("o", "— — —");
+        keel.put("r", "· — ·");
+        keel.put("t", "—");
+        keel.put("j", "· — — —");
+        keel.put("n", "— ·");
+
+        for (int i = 1; i <= textLength; i++) {
+            morseText = morseText + "  " + keel.get(text.substring(i - 1, i));
+            //System.out.println(text.substring(i - 1, i));
+            //System.out.println(morseText);
+        }
+        System.out.println("Tekst \"" + text + "\" on morse koodis " + morseText);
+        return morseText;
     }
 }

@@ -1,19 +1,26 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Lesson2 {
 
-    public static void main(String[] args) { //OK
+    public static void main(String[] args) throws FileNotFoundException { //OK
         //exercise1();
         //exercise2(8);
         //exercise3(2, 5);
         /*int fibResult = fibonacci(6);
         System.out.println("Fibonacci tagastab selle parameetriga tulemuse: " + fibResult);*/
-        int fibResult2 = fibonacci(6);
-        System.out.println("Fibonacci tagastab selle parameetriga tulemuse: " + fibResult2);
+        //int fibResult2 = fibonacci(6);
+        //System.out.println("Fibonacci tagastab selle parameetriga tulemuse: " + fibResult2);
         //exercise5();
+
+        exercise6();
+
         //exercise7();
     }
 
@@ -145,11 +152,11 @@ public class Lesson2 {
     public static void exercise5() { //OK
         int longestCycle = 0;
         // https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=36
-        for (int i = 100; i < 200; i++) {
+        for (int i = 10; i < 20; i++) {
             int n = i;
             int count = 0;
             while (n != 1) {
-                System.out.println(n);
+                //System.out.println(n);
                 count++;
                 if (n % 2 != 0) {
                     n = 3 * n + 1;
@@ -157,25 +164,81 @@ public class Lesson2 {
                     n = n / 2;
                 }
             }
-            System.out.println(n);
+            //System.out.println(n);
             count++;
-            System.out.println("Count of this nr is " + count);
+            //System.out.println("Count of this nr is " + count);
             if (count > longestCycle) {
                 longestCycle = count;
             }
-            System.out.println("LongestCount " + longestCycle);
+            //System.out.println("LongestCount " + longestCycle);
         }
-
+        System.out.println("LongestCount " + longestCycle);
     }
 
 
-    public static void exercise6() {
+    public static void exercise6() throws FileNotFoundException {
         /*
             Kirjutada Java programm, mis loeb failist visits.txt sisse looduspargi külastajad erinevatel jaanuari päevadel ning
             a) sorteerib külastuspäevad külastajate arvu järgi kasvavalt ning prindib tulemuse konsoolile;
             b) prindib konsoolile päeva, mil külastajaid oli kõige rohkem.
             Faili asukoht tuleb programmile ette anda käsurea parameetrina.
          */
+        File file = new File("C:\\Users\\opilane\\IdeaProjects\\vali-it\\Vali-IT\\resources\\visits.txt");
+        Scanner lineReader = new Scanner(file);
+
+        int visitors = 0;
+        String date = "";
+
+        List<Integer> list = new ArrayList();
+        List<String> listKPV = new ArrayList();
+
+        while (lineReader.hasNextLine()) {
+
+            String line = lineReader.nextLine();
+            //System.out.println(line);
+            //System.out.println(line.substring(12,15));
+
+            int currentVisitors = Integer.parseInt(line.substring(12, 15));
+            String currentDate = line.substring(0, 10);
+
+
+            //System.out.println(currentVisitors);
+
+            list.add(currentVisitors);
+            listKPV.add(currentDate);
+        }
+        System.out.println("Algne list : " + list);
+        System.out.println("Algne listKPV : " + listKPV);
+
+        //System.out.println(list.get(0));
+        //System.out.println(list.get(1));
+
+        int sizeList = list.size();
+        //System.out.println("SizeList"+sizeList);
+
+        int temp = 0;
+        String tempKPV = "";
+
+        for (int i = 1; i < sizeList; i++) {
+            for (int j = i; j > 0; j--) {
+                if (list.get(j) < list.get(j - 1)) {
+                    temp = list.get(j);
+                    tempKPV = listKPV.get(j);
+                    //System.out.println("TEMP"+temp);
+                    list.set(j, list.get(j - 1));
+                    listKPV.set(j, listKPV.get(j - 1));
+                    list.set(j - 1, temp);
+                    listKPV.set(j - 1, tempKPV);
+                }
+            }
+        }
+        System.out.println();
+        System.out.println("Lõplik sorteeritud list : " + list);
+        System.out.println("Lõplik sorteeritud list : " + listKPV);
+
+        System.out.println();
+
+        System.out.println("Kõige rohkem külastajaid kuupäeval: " + listKPV.get(sizeList - 1));
     }
 
     public static void exercise7() { //OK
@@ -191,7 +254,7 @@ public class Lesson2 {
         BigDecimal d = new BigDecimal("4");
         System.out.println(d);
 
-        BigDecimal result = a.multiply((b.divide(c,RoundingMode.HALF_UP)).subtract(d));
+        BigDecimal result = a.multiply((b.divide(c, RoundingMode.HALF_UP)).subtract(d));
         System.out.println(result);
 
         //LAHKU KIRJUTATULT
@@ -202,8 +265,6 @@ public class Lesson2 {
         System.out.println(subtraction);
         BigDecimal multiplication = subtraction.multiply(a);
         System.out.println(multiplication);*/
-
-
 
 
     }
