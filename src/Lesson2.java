@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,11 +20,12 @@ public class Lesson2 {
         //System.out.println("Fibonacci tagastab selle parameetriga tulemuse: " + fibResult2);
         //exercise5();
 
+
         //exercise6();
 
         //exercise7();
-        exercise8();
-
+        //exercise8();
+        exercise9();
     }
 
     public static void exercise1() { //OK
@@ -199,16 +201,22 @@ public class Lesson2 {
             String line = lineReader.nextLine();
             //System.out.println(line);
             //System.out.println(line.substring(12,15));
+            int currentVisitors = 0;
+            if (line.length() == 16) {
+                currentVisitors = Integer.parseInt(line.substring(12, 16));
+            } else {
+                currentVisitors = Integer.parseInt(line.substring(12, 15));
+            }
 
-            int currentVisitors = Integer.parseInt(line.substring(12, 15));
+
             String currentDate = line.substring(0, 10);
-
 
             //System.out.println(currentVisitors);
 
             list.add(currentVisitors);
             listKPV.add(currentDate);
         }
+
         System.out.println("Algne list : " + list);
         System.out.println("Algne listKPV : " + listKPV);
 
@@ -271,22 +279,64 @@ public class Lesson2 {
 
     }
 
-    public static void exercise8() {
+    public static void exercise8() throws FileNotFoundException {//OK
         /*
         Failis nums.txt on üksteise all 150 60-kohalist numbrit.
 
         Kirjuta programm, mis loeks antud numbrid failist sisse ja liidaks need arvud kokku ning kuvaks ekraanil summa.
-        Faili nimi tuleb programmile ette anda käsurea parameetrina.
+        Faili nimi tuleb programmile ette anda käsurea parameetrina.*/
 
-        VASTUS:
-        Õige summa: 77378062799264987173249634924670947389130820063105651135266574
-         */
+        File file = new File("C:\\Users\\opilane\\IdeaProjects\\vali-it\\Vali-IT\\resources\\nums.txt");
+        Scanner lineReader = new Scanner(file);
+        BigInteger summa = new BigInteger("0");
+        while (lineReader.hasNextLine()) {
+
+            String line = lineReader.nextLine();
+            BigInteger lineNr = new BigInteger(line);
+            summa = summa.add(lineNr);
+
+            //System.out.println(line);
+            //System.out.println("Integerina: " + lineNr);
+            //System.out.println(line.substring(12,15));
+        }
+        System.out.println("Kõigi summa on " + summa);
+
+        //VASTUS:
+        //Õige summa: 77378062799264987173249634924670947389130820063105651135266574
+
     }
 
-    public static void exercise9() {
+    public static void exercise9() throws FileNotFoundException {
         /* TODO
         Sama mis eelmises ülesandes aga ära kasuta BigInt ega BigDecimal klassi
          */
+
+        File file = new File("C:\\Users\\opilane\\IdeaProjects\\vali-it\\Vali-IT\\resources\\nums.txt");
+        Scanner lineReader = new Scanner(file);
+        int[][] tabel = new int[150][60];
+
+        while (lineReader.hasNextLine()) {
+            String wholeLine = lineReader.nextLine();
+
+            //System.out.println(wholeLine);
+
+            for (int i = 0; i <= 150; i++) {
+                for (int j = 1; j <= wholeLine.length(); j++) {
+                    String elementInLineSTR = wholeLine.substring(j - 1, j);
+                    //System.out.println(elementInLineSTR);
+                    int elementInLineINT = Integer.parseInt(elementInLineSTR);
+
+                    tabel[i][j-1] = elementInLineINT;
+                    System.out.println(tabel[i][j-1]);
+                }
+            }
+            //System.out.println("Integerina: " + lineNr);
+            //System.out.println(line.substring(12,15));
+        }
+
+        //VASTUS:
+        //Õige summa: 77378062799264987173249634924670947389130820063105651135266574
+
     }
 
 }
