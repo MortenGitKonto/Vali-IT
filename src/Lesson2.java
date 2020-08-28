@@ -313,30 +313,36 @@ public class Lesson2 {
 
         File file = new File("C:\\Users\\opilane\\IdeaProjects\\vali-it\\Vali-IT\\resources\\nums.txt");
         Scanner lineReader = new Scanner(file);
-        int[][] tabel = new int[150][60];
-
+        int[][] table = new int[150][60];
+        int count = 0;
         while (lineReader.hasNextLine()) {
-            String wholeLine = lineReader.nextLine();
+            String wholeLine = lineReader.nextLine(); //JÄRGMINE LINE STRINGIKS
+            count++;
+            //System.out.println(wholeLine.length());
+            System.out.println(); //ET RIDADEL VAHE OLEKS VÄLJA PRINTIDES
+            for (int j = 0; j < wholeLine.length(); j++) {
+                String elementInLineSTR = wholeLine.substring(j, j + 1);
+                //System.out.println(elementInLineSTR);
+                int elementInLineINT = Integer.parseInt(elementInLineSTR);
 
-            //System.out.println(wholeLine);
-
-            for (int i = 0; i <= 150; i++) {
-                for (int j = 1; j <= wholeLine.length(); j++) {
-                    String elementInLineSTR = wholeLine.substring(j - 1, j);
-                    //System.out.println(elementInLineSTR);
-                    int elementInLineINT = Integer.parseInt(elementInLineSTR);
-
-                    tabel[i][j-1] = elementInLineINT;
-                    System.out.println(tabel[i][j-1]);
-                }
+                table[count - 1][j] = elementInLineINT;
+                System.out.print(table[count - 1][j]);
             }
-            //System.out.println("Integerina: " + lineNr);
-            //System.out.println(line.substring(12,15));
+
+
+
         }
 
-        //VASTUS:
-        //Õige summa: 77378062799264987173249634924670947389130820063105651135266574
-
+        //System.out.println();
+        //System.out.println(table[0][3]);
+        //System.out.println(table.toString());
+        //System.out.println("Integerina: " + lineNr);
+        //System.out.println(line.substring(12,15));
     }
 
+    //VASTUS:
+    //Õige summa: 77378062799264987173249634924670947389130820063105651135266574
+
 }
+
+

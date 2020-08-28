@@ -126,7 +126,7 @@ public class Lesson3 {
 
         }
         System.out.println(tagurpidi);
-        return "";
+        return tagurpidi;
     }
 
     public static boolean isPrime(int x) {
